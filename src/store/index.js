@@ -7,13 +7,15 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   state: {
-
+    'token': ''
   },
   getters: {
 
   },
   mutations: {
-
+    updateToken (state, {token}) {
+      state.token = token
+    }
   },
   actions: {
 

@@ -1,5 +1,7 @@
+import store from '../../store'
+
 export default function (request, next) {
   request.url = '/api/' + request.url
-  request.headers.set('Content-Type', 'application/x-www-form-urlencoded')
+  request.headers.set('Token', store.state.token)
   next()
 }

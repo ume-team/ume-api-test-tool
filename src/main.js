@@ -8,15 +8,15 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN'
 import serviceInterceptor from './common/interceptors/common.interceptor'
-import CISRequestInterceptor from './common/interceptors/cis.request.interceptor'
-import CISResponseInterceptor from './common/interceptors/cis.response.interceptor'
+import CustomRequestInterceptor from './common/interceptors/custom.request.interceptor'
+import CustomResponseInterceptor from './common/interceptors/custom.response.interceptor'
 
 Vue.use(Http)
 Vue.use(Element, { locale })
 
-Vue.http.interceptors.push(CISRequestInterceptor)
+Vue.http.interceptors.push(CustomRequestInterceptor)
 Vue.http.interceptors.push(serviceInterceptor)
-Vue.http.interceptors.push(CISResponseInterceptor)
+Vue.http.interceptors.push(CustomResponseInterceptor)
 
 /* eslint-disable no-new */
 new Vue({

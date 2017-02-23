@@ -99,7 +99,6 @@ export default {
           this.updateHistory(this.inputForm)
           this.$http.post(this.inputForm.serviceId, this.inputForm.input)
             .then(res => {
-              console.log(res)
               this.output = res.data
             })
         } else {

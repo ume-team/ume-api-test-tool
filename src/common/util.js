@@ -13,8 +13,16 @@ function getNow (format = 'LL') {
   return moment().format(format)
 }
 
+function isEmpty (value) {
+  return _.isEmpty(value)
+}
+
 function isEqual (value, other) {
   return _.isEqual(value, other)
+}
+
+function isArray (value) {
+  return _.isArray(value)
 }
 
 function cloneDeep (objects) {
@@ -24,6 +32,8 @@ function cloneDeep (objects) {
 export default {
   getConfigValue,
   getNow,
+  isEmpty,
   isEqual,
+  isArray,
   cloneDeep
 }
