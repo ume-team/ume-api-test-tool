@@ -10,10 +10,9 @@ npm install
 
 ## Quick Start
 ``` bash
-# replace TARGET_WEBSERVICE_SERVER's value which in ./config/dev.env.js file
-example:
-TARGET_WEBSERVICE_SERVER: '"~~http://example.com/~~"'
-->
+# modify TARGET_WEBSERVICE_SERVER's value which in ./config/dev.env.js file
+e.g:
+# TARGET_WEBSERVICE_SERVER: '"http://example.com/"'
 TARGET_WEBSERVICE_SERVER: '"http://www.myservice.com/api"'
 
 # serve with hot reload at localhost:5000
