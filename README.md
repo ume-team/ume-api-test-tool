@@ -24,15 +24,13 @@ Modern browsers and Internet Explorer 9+.
 
 ## Internal Dependencies
 * [vue](https://github.com/vuejs/vue)
-* [vuex](https://github.com/vuejs/vuex)
-* [vue-resource](https://github.com/pagekit/vue-resource)
-* [element-ui](https://github.com/ElemeFE/element) - A Vue.js 2.0 UI Toolkit for Web.
+* [setaria-ui](https://github.com/bluejfox/setaria-ui) - A Vue.js 2.0 UI Toolkit for Web.
 * [jsoneditor](https://github.com/josdejong/jsoneditor) - A web-based tool to view, edit, format, and validate JSON.
 * [lodash](https://github.com/lodash/lodash/) - A modern JavaScript utility library delivering modularity, performance, & extras.
 * [moment](https://github.com/moment/moment/) - Parse, validate, manipulate, and display dates in javascript.
 
 ## ToDo
-- [ ] Store Service History in local/server by user
+- [X] Store Service History in local/server by user
 - [ ] Display Service History Item detail information on the left pane
 
 ## License
