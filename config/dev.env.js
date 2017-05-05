@@ -3,5 +3,6 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  TARGET_WEBSERVICE_SERVER: '"http://example.com/"'
+  PROXY_KEY: '"/ume-webapp/rest/s01/"',
+  TARGET_WEBSERVICE_SERVER: '"http://localhost:8080/ume-webapp/rest/s01/"',
 })

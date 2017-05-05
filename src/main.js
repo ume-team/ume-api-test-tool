@@ -2,26 +2,70 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import Http from 'vue-resource'
-import store from './store'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import locale from 'element-ui/lib/locale/lang/zh-CN'
-import serviceInterceptor from './common/interceptors/common.interceptor'
-import CustomRequestInterceptor from './common/interceptors/custom.request.interceptor'
-import CustomResponseInterceptor from './common/interceptors/custom.response.interceptor'
+import UI from './component/ui'
+import ErrorHandler from './model/ErrorHandler'
+import Util from './model/Util'
+import TsHttp from './model/TsHttp'
 
-Vue.use(Http)
-Vue.use(Element, { locale })
+// 加载公用UI控件
+Vue.use(UI)
+// 生产环境的场合
+if (Util.isProdunctionEnv()) {
+  // 不显示Vue日志和警告
+  Vue.config.silent = true
+  // 不显示Vue产品信息
+  Vue.config.productionTip = false
+}
 
-Vue.http.interceptors.push(CustomRequestInterceptor)
-Vue.http.interceptors.push(serviceInterceptor)
-Vue.http.interceptors.push(CustomResponseInterceptor)
+function handleAppError (error, source) {
+  // 取得错误内容
+  const errorMessage = ErrorHandler.handleError(error, source)
+  // 显示错误
+  UI.Notice.showMessage(errorMessage)
+}
+
+Vue.config.errorHandler = handleAppError
+window.onerror = handleAppError
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  store,
+  el: '#main',
   template: '<App/>',
-  components: { App }
+  components: { App },
+  methods: {
+    /**
+     * 调用远程服务
+     * @param  {String} serviceId    服务ID
+     * @param  {Array}  serviceParam 参数
+     * @param  {Object} config       配置信息
+     */
+    callService (serviceId, serviceParam, config = {}) {
+      return new Promise((resolve, reject) => {
+        // 显示全屏Loading
+        UI.LoadingIndicator.show()
+        // 调用远程服务
+        TsHttp.invoke(serviceId, serviceParam, config).then((res) => {
+          resolve(res)
+          // 隐藏全屏Loading
+          UI.LoadingIndicator.hide()
+        }).catch((error) => {
+          // 隐藏全屏Loading
+          UI.LoadingIndicator.hide()
+          // 调用方希望对错误进行处理的场合
+          if (config.isShowError === false) {
+            reject(error)
+          } else {
+            handleAppError(error)
+          }
+        })
+      })
+    },
+    /**
+     * 对错误进行整理并显示错误消息
+     * @param  {*} error 错误对象
+     */
+    handleError (error) {
+      handleAppError(error)
+    }
+  }
 })

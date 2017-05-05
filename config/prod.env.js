@@ -3,5 +3,7 @@ module.exports = {
   PROXY_KEY: '"/api"',
   APP_TITLE: '"WebService测试工具"',
   TARGET_WEBSERVICE_SERVER: '"http://example.com"',
-  SERVICE_TIME_OUT: '1000'
+  SERVICE_TIME_OUT: '10000',
+  STORAGE_KEY: '"__TS_STORAGE_"',
+  LOADING_TEXT: '"加载中"'
 }

@@ -23,15 +23,14 @@
 </template>
 
 <script>
-import util from './common/util'
-import ToolMain from './components/ToolMain'
-// import ToolMain from './components/TestJsonEditor'
+import Util from './model/Util'
+import ToolMain from './component/ToolMain'
 
 export default {
   name: 'app',
   computed: {
     appTitle () {
-      return util.getConfigValue('APP_TITLE')
+      return Util.getConfigValue('APP_TITLE')
     }
   },
   components: {
