@@ -53,8 +53,11 @@
 
 </template>
 <script>
-import Util from '../model/Util'
 import JsonEditor from './JSONEditor'
+import Storage, { STORAGE_TYPE } from '../model/Storage'
+import Util from '../model/Util'
+
+const STORAGE_KEY = '__service_history_list'
 
 export default {
   data () {
@@ -83,12 +86,21 @@ export default {
       },
       output: {
       },
-      serviceHistory: []
+      serviceHistory: Storage.getItem(STORAGE_TYPE.LOCAL, STORAGE_KEY) || []
     }
   },
   computed: {
     targetService () {
       return Util.getConfigValue('TARGET_WEBSERVICE_SERVER')
+    }
+  },
+  watch: {
+    serviceHistory: {
+      deep: true,
+      handler (val) {
+        console.log(val)
+        Storage.setItem(STORAGE_TYPE.LOCAL, STORAGE_KEY, val)
+      }
     }
   },
   methods: {
