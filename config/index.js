@@ -30,7 +30,7 @@ var config = {
   },
   dev: {
     env: devEnvObj,
-    port: 5000,
+    port: 5555,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

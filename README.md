@@ -15,7 +15,7 @@ e.g:
 # TARGET_WEBSERVICE_SERVER: '"http://example.com/"'
 TARGET_WEBSERVICE_SERVER: '"http://www.myservice.com/api"'
 
-# serve with hot reload at localhost:5000
+# serve with hot reload at localhost:5555
 npm run dev
 ```
 
