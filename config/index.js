@@ -4,7 +4,7 @@ var devEnvObj = require('./dev.env')
 var prodEnvObj = require('./prod.env')
 
 function getEnvConfig (key) {
-  let env = process.env.NODE_ENV === 'production' ? prodEnvObj : devEnvObj
+  var env = process.env.NODE_ENV === 'production' ? prodEnvObj : devEnvObj
   return env[key].replace(/"/g, '')
 }
 
